@@ -2,6 +2,19 @@ import * as Completed  from './Completed.chores.json';
 import {question} from "readline-sync";
 import * as fs from 'fs';
 
+interface DataSet {
+    data: string,
+    isComplete: boolean
+    getDataFromUser(): void;
+}
+
+type Data = DataSet & {
+
+    isAdminChose: boolean
+}
+
+
+
 function isComplete() {
     if (Completed[0].completed) {
 
@@ -18,7 +31,17 @@ if (isComplete()) {
 
     const isComplete = question("Is Your Chores Done...: ")
 
-    if (isComplete == "Yes") {
+    const dataByUser: Data = {
+        isAdminChose: true,
+        getDataFromUser() {
+            console.log("Data", )
+        },
+
+        data: isComplete,
+        isComplete: isComplete == ""
+    }
+
+    if (dataByUser["data"] == "Yes") {
 
         console.log("Complete Your Chore: " + Completed[0].COMPLETE_1)
         console.log("[Completed]: " + Completed[0].completed)
@@ -34,11 +57,22 @@ if (isComplete()) {
     }
 }
 
+
 if (isComplete()) {
 
     const isComplete = question("Is Your Chores Done...: ")
 
-    if (isComplete == "Yes") {
+    const dataByUser: Data = {
+        isAdminChose: true,
+        getDataFromUser() {
+            console.log("Data", )
+        },
+
+        data: isComplete,
+        isComplete: isComplete == ""
+    }
+
+    if (dataByUser["data"] == "Yes") {
 
         console.log("Complete Your Chore: " + Completed[1].COMPLETE_2)
         console.log("[Completed]: " + Completed[1].completed)
